@@ -1,0 +1,14 @@
+#dependencies
+node_modules/
+
+#Enviroment Variables
+.env
+.env.local
+#logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# os files
+.DS_Store
+thumbs.db
