@@ -3,6 +3,8 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import connectDB from './src/config/db.js';
+import { notFound, errorHandler } from './src/middleware/errorHandler.js';
+import authRouter from "./src/routes/authRouter.js";
 
 dotenv.config();
 
@@ -54,60 +56,10 @@ app.get('/api/test-db', async (req, res) => {
   }
 });
 
-// ==========================================
-// 🧪 MONGODB TESTING: Schema & Model
-// ==========================================
-const testStudentSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  rollNo: { type: String, required: true },
-  department: { type: String, default: 'Computer Science' },
-  createdAt: { type: Date, default: Date.now }
-});
+app.use("/api/auth", authRouter);
+app.use(notFound);
+app.use(errorHandler);
 
-const TestStudent = mongoose.model('TestStudent', testStudentSchema);
-
-// 1. Data Save (CREATE) Test Route
-app.post('/api/test-student', async (req, res) => {
-  try {
-    const { name, rollNo, department } = req.body;
-    const newStudent = await TestStudent.create({
-      name,
-      rollNo,
-      department
-    });
-
-    return res.status(201).json({
-      success: true,
-      message: 'Student successfully saved in MongoDB Atlas!',
-      data: newStudent
-    });
-  } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: 'Error saving data',
-      error: error.message
-    });
-  }
-});
-
-// 2. Saved Data (READ) Test Route
-app.get('/api/test-students', async (req, res) => {
-  try {
-    const students = await TestStudent.find();
-    return res.status(200).json({
-      success: true,
-      totalStudents: students.length,
-      data: students
-    });
-  } catch (error) {
-    return res.status(500).json({
-      success: false,
-      error: error.message
-    });
-  }
-});
-
-// Start Server Listener
 app.listen(PORT, () => {
-  console.log(`🚀 Server running in ${process.env.NODE_ENV || 'development'} mode on http://localhost:${PORT}`);
+  console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on http://localhost:${PORT}`);
 });
