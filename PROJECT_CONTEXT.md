@@ -108,8 +108,8 @@ JWT_EXPIRES_IN=7d
 | :--- | :--- | :--- |
 | GET | `/api/health` | ✅ Working |
 | GET | `/api/test-db` | ✅ Working |
-| POST | `/api/auth/register` | ✅ Ready to test |
-| POST | `/api/auth/login` | ✅ Ready to test |
+| POST | `/api/auth/register` | ✅ Tested & Working (201 Created) |
+| POST | `/api/auth/login` | ✅ Tested & Working (200 OK) |
 
 ---
 
@@ -119,8 +119,8 @@ JWT_EXPIRES_IN=7d
 - ✅ **Phase 2:** Backend Foundation & Database Setup (100% Complete)
 - 🔄 **Phase 3:** Authentication & Authorization (IN PROGRESS)
   - ✅ Task 3.1: bcryptjs password hashing (pre-save hook + matchPassword)
-  - 🔄 Task 3.2: Register & Login APIs with JWT (Fixed & Ready for Postman Verification)
-  - ⏳ Task 3.3: Auth Middleware (`protect` — verify JWT)
+  - ✅ Task 3.2: Register & Login APIs with JWT (100% Complete & Tested)
+  - 🔄 Task 3.3: Auth Middleware (`protect` — verify JWT) (NEXT UP)
   - ⏳ Task 3.4: Role-Based Authorization (`authorize('admin', 'faculty')`)
 - ⏳ **Phase 4:** Core Academic Modules (Admin, Course, Attendance APIs)
 - ⏳ **Phase 5:** Advanced Modules (Marks, Fees, File Uploads, Extras)
