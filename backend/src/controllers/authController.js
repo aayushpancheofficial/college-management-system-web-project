@@ -92,3 +92,17 @@ export const login = async (req, res, next) => {
         next(error);
     }
 };
+
+
+export const getMe = async (req, res, next) => {
+    try {
+        const user = await
+            User.findById(req.user._id);
+
+        return res
+            .status(200)
+            .json(new ApiResponse(200, { user }, 'Profile fetched sucessfully'));
+    } catch (error) {
+        next(error);
+    }
+};
