@@ -2,7 +2,6 @@ import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 import ApiError from '../utils/ApiError.js';
 
-
 export const protect = async (req, res, next) => {
     try {
         let token;
@@ -13,7 +12,6 @@ export const protect = async (req, res, next) => {
         ) {
             token = req.headers.authorization.split(' ')[1];
         }
-
 
         if (!token) {
             throw new ApiError(401, 'Not authorized, please login to get access');
@@ -42,4 +40,13 @@ export const protect = async (req, res, next) => {
             next(error);
         }
     }
+};
+
+export const authorize = (...roles) => {
+    return (req, res, next) => {
+        if (!req.user || !roles.includes(req.user.role)) {
+            throw new ApiError(403, `Role (${req.user?.role || 'Guest'}) is not allowed to access this resource`);
+        }
+        next();
+    };
 };

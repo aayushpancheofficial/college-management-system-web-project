@@ -111,18 +111,21 @@ JWT_EXPIRES_IN=7d
 | POST | `/api/auth/register` | ✅ Tested & Working (201 Created) |
 | POST | `/api/auth/login` | ✅ Tested & Working (200 OK) |
 
+| GET | `/api/auth/me` | ✅ Tested & Working (200 OK) |
+| GET | `/api/auth/admin-dashboard` | ✅ Tested & Working (RBAC 200/403) |
+
 ---
 
 ## 🗺️ 8. Roadmap Progress
 
 - ✅ **Phase 1:** Planning & Architecture (100% Complete)
 - ✅ **Phase 2:** Backend Foundation & Database Setup (100% Complete)
-- 🔄 **Phase 3:** Authentication & Authorization (IN PROGRESS)
+- ✅ **Phase 3:** Authentication & Authorization (100% COMPLETE! 🏆)
   - ✅ Task 3.1: bcryptjs password hashing (pre-save hook + matchPassword)
   - ✅ Task 3.2: Register & Login APIs with JWT (100% Complete & Tested)
-  - 🔄 Task 3.3: Auth Middleware (`protect` — verify JWT) (NEXT UP)
-  - ⏳ Task 3.4: Role-Based Authorization (`authorize('admin', 'faculty')`)
-- ⏳ **Phase 4:** Core Academic Modules (Admin, Course, Attendance APIs)
+  - ✅ Task 3.3: Auth Middleware (`protect` — verify JWT & getMe route)
+  - ✅ Task 3.4: Role-Based Authorization (`authorize('admin', 'faculty')`)
+- 🔄 **Phase 4:** Core Academic Modules (Admin, Course, Attendance APIs) (NEXT UP)
 - ⏳ **Phase 5:** Advanced Modules (Marks, Fees, File Uploads, Extras)
 - ⏳ **Phase 6:** Frontend Foundation (React + Vite + Tailwind)
 - ⏳ **Phase 7:** Frontend Dashboards (Admin, Faculty, Student)
